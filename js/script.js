@@ -1,31 +1,15 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Toggle mobile menu
-  const toggler = document.getElementById("toggler");
-  const navbar = document.querySelector(".navbar");
+// Toggle class active
+const navbarNav = document.querySelector(".navbar-nav");
+// Ketika hamburger menu diklik
+document.querySelector("#hamburger-menu").onclick = () => {
+  navbarNav.classList.toggle("active");
+};
 
-  toggler.addEventListener("change", function () {
-    navbar.classList.toggle("active", this.checked);
-  });
+// Klik luar sidebar untuk menghilangkan nav
+const hamburger = document.querySelector("#hamburger-menu");
 
-  // Menambah Item ke Keranjang
-  const cartButtons = document.querySelectorAll(".cart-btn");
-  const cartIcon = document.querySelector(".fa-shopping-cart");
-
-  cartButtons.forEach((button) => {
-    button.addEventListener("click", function (event) {
-      event.preventDefault();
-      alert("Item added to cart!");
-    });
-  });
-
-  // Menambah Item Ke Favorit
-
-  const heartIcons = document.querySelectorAll(".fas.fa-heart");
-
-  heartIcons.forEach((icon) => {
-    icon.addEventListener("click", function () {
-      // You can implement your own logic to handle favorites
-      this.classList.toggle("active");
-    });
-  });
+document.addEventListener("click", function (e) {
+  if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove("active");
+  }
 });
